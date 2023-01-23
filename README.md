@@ -1,9 +1,5 @@
 # System Administration
 
-Created: December 21, 2022 9:00 PM
-Last edited time: January 18, 2023 11:03 AM
-Status: Done
-
 ## Important Note -
 
  
@@ -24,12 +20,12 @@ Status: Done
 > console.log(`my ip is ${ip}`) //my ip is x
 > ```
 > 
-> “my name  is ${user}” is equal to “my name is rahul” in my case so just change it accordingly and same with ${ip}
+> 'my name  is \$ \{user\}' is equal to 'my name is rahul' in my case so just change it accordingly and same with \$ \{ip\}
 > 
-
-And one more important setting you need to make before performing practicals, set your network connection type to bridged type, that is mandatory.
-
-If you are performing practicals on your laptop it might not support “bridged” in that case you need to select “internal” at the bottom 
+> And one more important setting you need to make before performing practicals, set your network connection type to bridged type, that is mandatory.
+>
+> If you are performing practicals on your laptop it might not support “bridged” in that case you need to select “internal” at the bottom 
+>
 
 ---
 
@@ -68,8 +64,7 @@ sudo adduser ${user}
 > 
 
 <aside>
-<img src="https://www.notion.so/icons/chat_gray.svg" alt="https://www.notion.so/icons/chat_gray.svg" width="40px" /> Done!
-
+ Done!
 </aside>
 
 ---
@@ -77,8 +72,8 @@ sudo adduser ${user}
 ### Install & Config Telnet
 
 <aside>
-<img src="https://www.notion.so/icons/chat_gray.svg" alt="https://www.notion.so/icons/chat_gray.svg" width="40px" /> “xinetd” is server and “telnet” is client so we first need to install xinetd
-
+“xinetd” is server and “telnet” is client so we first need to install xinetd
+<br/><br/>
 </aside>
 
 ```bash
@@ -88,23 +83,23 @@ sudo nano /etc/xinetd.d/telnet
 ```
 
 <aside>
-<img src="https://www.notion.so/icons/chat_gray.svg" alt="https://www.notion.so/icons/chat_gray.svg" width="40px" /> File will open up, navigate using arrow keys and add following lines
-
+File will open up, navigate using arrow keys and add following lines
+<br/><br/>
 </aside>
 
-> service telnet
-> 
-> 
-> {
-> disable = no
-> flags = REUSE
-> socket_type = stream
-> wait = no
-> user = root
-> server = /usr/sbin/in.telnetd
-> log_on_failure += USERID
-> }
-> 
+```text
+service telnet
+{
+ disable = no
+ flags = REUSE
+ socket_type = stream
+ wait = no
+ user = root
+ server = /usr/sbin/in.telnetd
+ log_on_failure += USERID
+}
+  
+``` 
 
 > Ctrl+s
 > 
@@ -121,7 +116,7 @@ sudo systemctl status xinetd.service
 > 
 
 <aside>
-<img src="https://www.notion.so/icons/chat_gray.svg" alt="https://www.notion.so/icons/chat_gray.svg" width="40px" /> Done!
+Done!
 
 </aside>
 
@@ -141,8 +136,8 @@ sudo nano /etc/vsftpd.conf
 ```
 
 <aside>
-<img src="https://www.notion.so/icons/chat_gray.svg" alt="https://www.notion.so/icons/chat_gray.svg" width="40px" /> Now file will open up, just add the following line at the bottom (so that it can allow upload as well)
-
+Now file will open up, just add the following line at the bottom (so that it can allow upload as well)
+<br/><br/>
 </aside>
 
 > write_enable=YES
@@ -155,8 +150,8 @@ sudo nano /etc/vsftpd.conf
 > 
 
 <aside>
-<img src="https://www.notion.so/icons/chat_gray.svg" alt="https://www.notion.so/icons/chat_gray.svg" width="40px" /> Now add user using following command
-
+Now add user using following command
+<br/><br/>
 </aside>
 
 ```bash
@@ -164,8 +159,8 @@ sudo adduser ${user}
 ```
 
 <aside>
-<img src="https://www.notion.so/icons/chat_gray.svg" alt="https://www.notion.so/icons/chat_gray.svg" width="40px" /> Now open CMD in client machine and type following
-
+Now open CMD in client machine and type following
+<br/><br/>
 </aside>
 
 ```bash
@@ -173,15 +168,15 @@ ftp ${ip}
 ```
 
 <aside>
-<img src="https://www.notion.so/icons/chat_gray.svg" alt="https://www.notion.so/icons/chat_gray.svg" width="40px" /> Perform login and it will open up so basically done!
-
+Perform login and it will open up so basically done!
+<br/><br/>
 </aside>
 
 ### Put, Get FTP
 
 <aside>
-<img src="https://www.notion.so/icons/chat_gray.svg" alt="https://www.notion.so/icons/chat_gray.svg" width="40px" /> Create any name file but I name it test.txt in ubuntu and save at location “home/${user}/”, basically after doing that come back to cmd where ftp is open and write following command
-
+Create any name file but I name it test.txt in ubuntu and save at location “home/${user}/”, basically after doing that come back to cmd where ftp is open and write following command
+<br/><br/>
 </aside>
 
 ```bash
@@ -191,7 +186,7 @@ put test.txt
 ```
 
 <aside>
-<img src="https://www.notion.so/icons/chat_gray.svg" alt="https://www.notion.so/icons/chat_gray.svg" width="40px" /> Basically done!
+Basically done!
 
 </aside>
 
@@ -208,8 +203,8 @@ sudo nano /etc/samba/smb.conf
 ```
 
 <aside>
-<img src="https://www.notion.so/icons/chat_gray.svg" alt="https://www.notion.so/icons/chat_gray.svg" width="40px" /> File will open up just go at the end, and add following lines
-
+File will open up just go at the end, and add following lines
+<br/><br/>
 </aside>
 
 ```
@@ -240,8 +235,8 @@ sudo service smbd status
 ```
 
 <aside>
-<img src="https://www.notion.so/icons/chat_gray.svg" alt="https://www.notion.so/icons/chat_gray.svg" width="40px" /> Now it's done, you can check it by simply entering address in this format in the add network location in file explorer at network.
-
+Now it's done, you can check it by simply entering address in this format in the add network location in file explorer at network.
+<br/><br/>
 </aside>
 
 > //${ip}/
@@ -260,7 +255,7 @@ sudo systemctl status apache2.service
 ```
 
 <aside>
-<img src="https://www.notion.so/icons/chat_gray.svg" alt="https://www.notion.so/icons/chat_gray.svg" width="40px" /> Now go to windows browser and enter your ubuntu ip, and if it loads Apache page, everything working perfectly fine!
+Now go to windows browser and enter your ubuntu ip, and if it loads Apache page, everything working perfectly fine!
 
 </aside>
 
@@ -275,8 +270,8 @@ sudo nano /etc/squid/squid.conf
 ```
 
 <aside>
-<img src="https://www.notion.so/icons/report_gray.svg" alt="https://www.notion.so/icons/report_gray.svg" width="40px" /> Now pay attention, by default it will deny all http access so you need to navigate to “http_access deny all” and make it “http_access allow all” additionally you need to add two more line at the top as follows
-
+Now pay attention, by default it will deny all http access so you need to navigate to “http_access deny all” and make it “http_access allow all” additionally you need to add two more line at the top as follows
+<br/><br/>
 </aside>
 
 ```
@@ -297,8 +292,8 @@ sudo nano blocked.txt
 ```
 
 <aside>
-<img src="https://www.notion.so/icons/chat_gray.svg" alt="https://www.notion.so/icons/chat_gray.svg" width="40px" /> File will open up, now add urls like
-
+ File will open up, now add urls like
+<br/><br/>
 </aside>
 
 ```
@@ -319,24 +314,10 @@ sudo systemctl status squid
 ```
 
 <aside>
-<img src="https://www.notion.so/icons/chat_gray.svg" alt="https://www.notion.so/icons/chat_gray.svg" width="40px" /> Now it's done! Just change the proxy server in your client as your ubuntu ip and port as 3128
+Now it's done! Just change the proxy server in your client as your ubuntu ip and port as 3128
 
 </aside>
 
 ---
 
-<aside>
-<img src="https://www.notion.so/icons/chat_gray.svg" alt="https://www.notion.so/icons/chat_gray.svg" width="40px" /> Still if you face difficulty then you refer my screenshots as below
-
-</aside>
-
-[https://drive.google.com/drive/folders/18CeqwV2jTGLutnCHRCxysdSZsYP96PzT](https://drive.google.com/drive/folders/18CeqwV2jTGLutnCHRCxysdSZsYP96PzT)
-
----
-
-<aside>
-<img src="https://www.notion.so/icons/heart-outline_gray.svg" alt="https://www.notion.so/icons/heart-outline_gray.svg" width="40px" /> Have a Great Day! ^⁠_⁠^
-
-> therahuldange
-> 
-</aside>
+> therahuldange 
